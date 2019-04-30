@@ -89,6 +89,7 @@ MultiInstance::MultiInstance
 ):
 CommandClass( _homeId, _nodeId ),
 m_numEndPoints( 0 ),
+m_useDestAsSrc(false),
 m_numEndPointsHint( 0 ),
 m_endPointMap( MultiInstanceMapAll ),
 m_endPointFindSupported( false ),
@@ -147,6 +148,12 @@ void MultiInstance::ReadXML
 	{
 		m_uniqueendpoints = !strcmp( str, "true");
 	}
+	str = _ccElement->Attribute( "invertEndpointSource" );
+	if( str )
+	{
+		m_useDestAsSrc = !strcmp( str, "true" );
+	}
+
 }
 
 //-----------------------------------------------------------------------------
@@ -180,6 +187,10 @@ void MultiInstance::WriteXML
 	if( m_uniqueendpoints )
 	{
 		_ccElement->SetAttribute( "forceUniqueEndpoints", "true" );
+	}
+	if ( m_useDestAsSrc )
+	{
+		_ccElement->SetAttribute( "invertEndpointSource", "true" );
 	}
 
 }
@@ -350,6 +361,11 @@ void MultiInstance::HandleMultiInstanceEncap
 			pCommandClass->ReceivedCntIncr();
 			pCommandClass->HandleMsg( &_data[3], _length-3, instance );
 		}
+		else
+		{
+			Log::Write( LogLevel_Warning, GetNodeId(), "Received invalid MultiInstanceReport from node %d. Attempting to process as MultiChannel", GetNodeId());
+			HandleMultiChannelEncap( _data, _length );
+		}
 	}
 }
 
@@ -439,7 +455,12 @@ void MultiInstance::HandleMultiChannelCapabilityReport
 			return;
 		}
 
-		uint8 endPoint = _data[1] & 0x7f;
+		uint8 endPoint;
+		if (m_useDestAsSrc) {
+			endPoint = _data[2] & 0x7f;
+		} else {
+			endPoint = _data[1] & 0x7f;
+		}
 
 		Log::Write( LogLevel_Info, GetNodeId(), "Received MultiChannelCapabilityReport from node %d for endpoint %d", GetNodeId(), endPoint );
 		Log::Write( LogLevel_Info, GetNodeId(), "    Endpoint is%sdynamic, and is a %s", dynamic ? " " : " not ", node->GetEndPointDeviceClassLabel( _data[2], _data[3] ).c_str() );
@@ -683,6 +704,15 @@ void MultiInstance::HandleMultiChannelEncap
 		uint8 commandClassId = _data[3];
 		if( CommandClass* pCommandClass = node->GetCommandClass( commandClassId ) )
 		{
+			/* 4.85.13 - If the Root Device is originating a command to an End Point in another node, the Source End Point MUST be set to 0.
+			 *
+			 */
+			if (endPoint == 0) {
+				Log::Write( LogLevel_Error, GetNodeId(), "MultiChannelEncap with endpoint set to 0 - Send to Root Device");
+				pCommandClass->HandleMsg(&_data[4], _length-4);
+				return;
+			}
+
 			uint8 instance = pCommandClass->GetInstance( endPoint );
 			if( instance == 0 )
 			{
