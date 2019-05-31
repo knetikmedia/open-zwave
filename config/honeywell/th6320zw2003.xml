@@ -2,6 +2,11 @@
 <Product xmlns='http://code.google.com/p/open-zwave/'>
   <!-- This thermostat's setpoint descriptions are 1 based, not 0 -->
   <CommandClass id="67" name="COMMAND_CLASS_THERMOSTAT_SETPOINT" base="0" />
+  <CommandClass id="49" name="COMMAND_CLASS_SENSOR_MULTILEVEL" version="5" innif="true">
+    <Instance index="1" />
+      <Value type="decimal" genre="user" instance="1" index="1" label="Temperature" units="F" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="77.0" />
+      <Value type="decimal" genre="user" instance="1" index="5" label="Relative Humidity" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="0.0" />
+  </CommandClass>
   <CommandClass id="112">
     <Value type="list" index="1" genre="config" label="Schedule Type" units="" min="0" max="4" value="2" size="1">
       <Help>
