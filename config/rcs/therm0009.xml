@@ -29,4 +29,22 @@
       <Base>0</Base>
     </Compatibility>
   </CommandClass>
+  <CommandClass id="112" name="COMMAND_CLASS_CONFIGURATION" version="1" request_flags="4" innif="true">
+    <Instance index="1" />
+    <Value type="byte" genre="config" instance="1" index="3" label="Change Over Type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+    <Value type="byte" genre="config" instance="1" index="7" label="C/F type" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1" />
+    <Value type="byte" genre="config" instance="1" index="10" label="Setpoint Delta" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="3" />
+    <Value type="byte" genre="config" instance="1" index="24" label="Display Lock" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+    <Value type="byte" genre="config" instance="1" index="33" label="UI Heat Max" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="90" />
+    <Value type="byte" genre="config" instance="1" index="34" label="UI Cool Min" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="60" />
+    <Value type="byte" genre="config" instance="1" index="38" label="Schedule Enable" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+    <Value type="byte" genre="config" instance="1" index="58" label="Filter Alert" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+    <Value type="byte" genre="config" instance="1" index="59" label="Maint Alert" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0" />
+    <Value type="byte" genre="config" instance="1" index="156" label="Humidity HCL Enable" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="1" />
+    <Value type="byte" genre="config" instance="1" index="158" label="Humidity Setpoint" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="55" />
+    <Value type="byte" genre="config" instance="1" index="160" label="Humidity Setpoint Delta" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="5" />
+    <Value type="byte" genre="config" instance="1" index="161" label="Humidity Temp Delta" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="2" />
+    <Value type="byte" genre="config" instance="1" index="163" label="Humidity HCL On time" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="30" />
+    <Value type="byte" genre="config" instance="1" index="164" label="Humidity HCL Off time" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="30" />
+  </CommandClass>
 </Product>
