@@ -1346,7 +1346,9 @@
     <Product config="prowell/zw-702.xml" id="0301" name="ZW-702 Door Lock" type="3001"/>
   </Manufacturer>
   <Manufacturer id="0142" name="Rademacher Gerate-Elektronik GmbH"></Manufacturer>
-  <Manufacturer id="0098" name="Radio Thermostat Company of America"></Manufacturer>
+  <Manufacturer id="0098" name="Radio Thermostat Company of America">
+    <Product config="radio/ct200.xml" id="0024" name="CT200" type="c801"/>
+  </Manufacturer>
   <Manufacturer id="0314" name="Raonix Co. Ltd"></Manufacturer>
   <Manufacturer id="008E" name="Raritan"></Manufacturer>
   <Manufacturer id="040F" name="RATOC Systems Inc"></Manufacturer>

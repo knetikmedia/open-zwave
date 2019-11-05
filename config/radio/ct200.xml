@@ -1,0 +1,33 @@
+<Product Revision="1" xmlns="https://github.com/OpenZWave/open-zwave">
+  <CommandClass id="67">
+    <Compatibility>
+      <Base>0</Base>
+    </Compatibility>
+
+    <State>
+      <CCVersion>2</CCVersion>
+      <InNif>true</InNif>
+      <StaticRequests>0</StaticRequests>
+    </State>
+
+    <Value type="decimal" genre="user" instance="1" index="1" label="Heating 1" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="78">
+      <Help>Set the Thermostat Setpoint Heating 1</Help>
+    </Value>
+
+    <Value type="decimal" genre="user" instance="1" index="2" label="Cooling 1" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="74">
+      <Help>Set the Thermostat Setpoint Cooling 1</Help>
+    </Value>
+  </CommandClass>
+
+  <CommandClass id="112">
+    <Value type="list" genre="config" instance="1" index="3" label="Utility Lock" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Set the Utility Lock</Help>
+      <Item label="Off" value="0" />
+      <Item label="On" value="3" />
+    </Value>
+
+    <Value type="byte" genre="config" instance="1" index="15" label="Parameter #15" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="255" value="0">
+      <Help>I Have no idea why but all changes to the Display propagate up as this command</Help>
+    </Value>
+  </CommandClass>
+</Product>
