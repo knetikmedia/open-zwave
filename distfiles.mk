@@ -1074,6 +1074,7 @@ DISTFILES =	.gitignore \
 	config/qubino/ZMNHZDx.xml \
 	config/qubino/ZMNKIDx.xml \
 	config/quby/qb2.xml \
+	config/radio/ct200.xml \
 	config/rcs/em52-zw.xml \
 	config/rcs/pm12-zw.xml \
 	config/rcs/therm0005.xml \

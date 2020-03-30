@@ -1,0 +1,105 @@
+<Product Revision="1" xmlns="https://github.com/OpenZWave/open-zwave">
+  <MetaData>
+    <MetaDataItem name="OzwInfoPage">http://www.openzwave.com/device-database/0098:0024:C801</MetaDataItem>
+    <MetaDataItem id="0024" name="ZWProductPage" type="C801">https://products.z-wavealliance.org/products/3588</MetaDataItem>
+    <MetaDataItem name="Name">Z-Wave Plus thermostat</MetaDataItem>
+    <MetaDataItem name="InclusionDescription">Alternative to SmartStart, the thermostat can be added by:
+      1. Set your primary controller to INCLUDE mode to add the thermostat as a node on your network (see your specific controller’s User Manual for detailed instructions).
+      2. The thermostat main screen shows a welcome message. Press the SIDE button to continue.
+      3. Press the SIDE button to initiate the inclusion process. This initiates the network connection process. If inclusion fails, the screen says “Failed”. Press the SIDE button to try adding again.
+      4. When the thermostat has been successfully included to a Z-Wave network, the screen displays a confirmation. Press the SIDE button to continue. You can now configure the thermostat to work with your HVAC system.
+      5. Your primary controller should indicate that the thermostat was successfully added to its network (see your specific controller’s User Manual for details).</MetaDataItem>
+    <MetaDataItem name="Description">Z-Wave Plus thermostat for the Home Security and Home Automation markets. The feature-packed technology from Radio Thermostat includes a dynamic power supply to maximize battery lifetime and Z-Wave Plus mesh network connectivity. </MetaDataItem>
+    <MetaDataItem id="0024" name="FrequencyName" type="C801">U.S. / Canada / Mexico</MetaDataItem>
+    <MetaDataItem id="0024" name="Identifier" type="C801">CT200</MetaDataItem>
+    <MetaDataItem name="ProductManual">https://Products.Z-WaveAlliance.org/ProductManual/File?folder=&amp;filename=Manuals/2893/33-00414-01-min.pdf</MetaDataItem>
+    <MetaDataItem name="ExclusionDescription">The thermostat can be removed from the Z-Wave network process similar to the inclusion process. Set your primary controller to EXCLUDE.</MetaDataItem>
+    <MetaDataItem name="ResetDescription">Reset clears Z-Wave settings and restores Z-Wave settings to factory default.
+      Reset does not affect Thermostat settings.
+      Use this procedure only if the Z-Wave network primary controller is missing or inoperable.
+      The Thermostat automatically resets and reboots the Z-Wave radio. You will need to reconnect the Thermostat to your Z-Wave network.</MetaDataItem>
+    <ChangeLog>
+      <Entry author="Brian Zollman - Brian.Zollman@knetik.com" date="27 Mar 2020" revision="1">Initial Metadata Import from Z-Wave Alliance Database - https://products.z-wavealliance.org/Products/3588/XML</Entry>
+    </ChangeLog>
+  </MetaData>
+  <CommandClass id="64">
+    <Value genre="user" index="0" instance="1" label="Mode" max="0" min="0" read_only="false" type="list" units="" value="0" write_only="false">
+      <Item label="Off" value="0"/>
+      <Item label="Heat" value="1"/>
+      <Item label="Cool" value="2"/>
+      <Item label="Auto" value="3"/>
+    </Value>
+    <SupportedModes>
+      <Mode index="0" label="Off"/>
+      <Mode index="1" label="Heat"/>
+      <Mode index="2" label="Cool"/>
+      <Mode index="3" label="Auto"/>
+    </SupportedModes>
+    <Compatibility>
+      <CreateVars>true</CreateVars>
+    </Compatibility>
+  </CommandClass>
+  <CommandClass id="67">
+    <Compatibility>
+      <Base>0</Base>
+    </Compatibility>
+    <Value type="decimal" genre="user" instance="1" index="1" label="Heating 1" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="78">
+      <Help>Set the Thermostat Setpoint Heating 1</Help>
+    </Value>
+    <Value type="decimal" genre="user" instance="1" index="2" label="Cooling 1" units="F" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" value="74">
+      <Help>Set the Thermostat Setpoint Cooling 1</Help>
+    </Value>
+  </CommandClass>
+
+  <CommandClass id="112">
+    <Value type="list" genre="config" instance="1" index="1" label="Temperature Reporting Threshold" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1" value="2">
+      <Help>Set the Temperature Reporting Threshold</Help>
+      <Item label="Disable Reporting" value="0" />
+      <Item label="0.5 degrees Fahrenheit" value="1" />
+      <Item label="1.0 degrees Fahrenheit" value="2" />
+      <Item label="1.5 degrees Fahrenheit" value="3" />
+      <Item label="2.0 degrees Fahrenheit" value="4" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="3" label="Utility Lock" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Set the Utility Lock</Help>
+      <Item label="Off" value="0" />
+      <Item label="On" value="3" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="4" label="Thermostat Power Source" units="" read_only="true" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Get the TYhermostat Power Source</Help>
+      <Item label="C-Wire" value="1" />
+      <Item label="Batteries" value="2" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="5" label="Humidity Reporting Threshold" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Set the Humidity Reporting Threshold</Help>
+      <Item label="Disable Reporting" value="0" />
+      <Item label="3% Relative Humidity" value="1" />
+      <Item label="5% Relative Humidity" value="2" />
+      <Item label="10% Relative Humidity" value="3" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="6" label="6" units="Auxiliary Heat" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Enables or Disables the thermostat mode: Aux Heat</Help>
+      <Item label="Disabled Auxiliary Heat" value="0" />
+      <Item label="Enabled Auxiliary Heat" value="1" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="7" label="Thermostat Swing Temperature" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>The Thermostat Swing Temperature parameter specifies the swing temperature on the thermostat.</Help>
+      <Item label="not supported" value="0" />
+      <Item label="0.5 degrees Fahrenheit" value="1" />
+      <Item label="1.0 degrees Fahrenheit" value="2" />
+      <Item label="1.5 degrees Fahrenheit" value="3" />
+      <Item label="2.0 degrees Fahrenheit" value="4" />
+      <Item label="2.5 degrees Fahrenheit" value="5" />
+      <Item label="3.0 degrees Fahrenheit" value="6" />
+      <Item label="3.5 degrees Fahrenheit" value="7" />
+      <Item label="4.0 degrees Fahrenheit" value="8" />
+    </Value>
+    <Value type="list" genre="config" instance="1" index="15" label="Fan Timer" units="" read_only="false" write_only="false" verify_changes="false" poll_intensity="0" min="0" max="0" vindex="0" size="1">
+      <Help>Activate a fan with an automatic shut-off timer</Help>
+      <Item label="Always On" value="0" />
+      <Item label="15 minutes" value="15" />
+      <Item label="30 minutes" value="30" />
+      <Item label="60 minutes" value="60" />
+    </Value>
+  </CommandClass>
+</Product>

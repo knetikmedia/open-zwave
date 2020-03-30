@@ -37,7 +37,7 @@ Remark : Please use this procedure only when the network primary controller is m
 	<!-- COMMAND_CLASS_THERMOSTAT_SETPOINT get is not supported -->
   <CommandClass id="67">
     <Compatibility>
-      <GetSupported>false</GetSupported>
+<!--      <GetSupported>true</GetSupported>-->
       <Base>0</Base>
     </Compatibility>
   </CommandClass>
